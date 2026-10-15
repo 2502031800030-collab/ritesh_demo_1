@@ -1,0 +1,107 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Flower Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px #cccccc;
+        }
+
+        h1 {
+            color: #4338ca;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            background: #4338ca;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #312e81;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #15803d;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>AI Flower Prediction</h1>
+    <p>Enter flower measurements in centimeters.</p>
+
+    <input type="number" id="sl" placeholder="Sepal Length" step="any">
+    <input type="number" id="sw" placeholder="Sepal Width" step="any">
+    <input type="number" id="pl" placeholder="Petal Length" step="any">
+    <input type="number" id="pw" placeholder="Petal Width" step="any">
+
+    <br><br>
+    <button onclick="predictFlower()">Predict Flower</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function predictFlower() {
+    let sl = parseFloat(document.getElementById("sl").value);
+    let sw = parseFloat(document.getElementById("sw").value);
+    let pl = parseFloat(document.getElementById("pl").value);
+    let pw = parseFloat(document.getElementById("pw").value);
+
+    if ([sl, sw, pl, pw].some(v => !Number.isFinite(v) || v <= 0)) {
+        document.getElementById("result").innerText =
+            "Please enter all four measurements correctly.";
+        return;
+    }
+
+    // Simple demonstration classifier, not a trained AI model
+    let flower;
+
+    if (pl < 2.5 && pw < 0.8) {
+        flower = "Iris Setosa";
+    } else if (pl < 5.0 && pw < 1.8) {
+        flower = "Iris Versicolor";
+    } else {
+        flower = "Iris Virginica";
+    }
+
+    document.getElementById("result").innerText =
+        "Predicted Flower: " + flower;
+}
+</script>
+
+</body>
+</html>
+```
